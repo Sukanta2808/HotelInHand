@@ -4,17 +4,16 @@ require('dotenv').config();
 
 const app=express();
 
-const FRONTEND_URL='https://hotelinhand.netlify.app/'
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
-app.use(cors({ credentials: true, origin: `${FRONTEND_URL}` }));
+app.use(cors({ credentials: true, origin: 'https://hotelinhand.netlify.app/' }));
 app.use(express.static('public'));
 
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     next();
+// });
 
 const dbConfig=require('./db');
 const roomsRoute=require('./routes/roomsRoute');
