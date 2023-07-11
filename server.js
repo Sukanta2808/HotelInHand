@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const app=express();
 
-const FRONTEND_URL='hotelinhand.netlify.app'
+const FRONTEND_URL='https://hotelinhand.netlify.app/'
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cors({ credentials: true, origin: `${FRONTEND_URL}` }));
