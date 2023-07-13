@@ -1,5 +1,4 @@
 node_modules
 .DS_Store
-client
 .env
 package-lock.json
