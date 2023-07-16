@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Tabs,Tag } from "antd";
 import axios from "axios";
 import Loader from "../components/Loader";
-import Error from "../components/Error";
 import Swal from "sweetalert2";
 
 const { TabPane } = Tabs;
@@ -43,6 +42,7 @@ export function MyBookings() {
   const [bookings, setbookings] = useState();
   const [loading, setloading] = useState();
   const [error, seterror] = useState();
+  console.log(error)
   useEffect(() => {
     return async () => {
       try {

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Room from "../components/Room";
 import Loader from "../components/Loader";
-import Error from "../components/Error";
-import { DatePicker, Space } from "antd";
+import { DatePicker } from "antd";
 import moment from "moment";
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -22,13 +21,13 @@ function Homescreen() {
   const [type, settype] = useState("all");
 
   const { RangePicker } = DatePicker;
-  const [size, setSize] = useState('large');
+  const size = 'large';
 
   const disabledDate = (current) => {
     return current && current < dayjs().startOf('day');
   };
 
-
+console.log(error);
   useEffect(() => {
     return async () => {
       try {

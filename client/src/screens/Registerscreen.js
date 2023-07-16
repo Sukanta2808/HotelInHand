@@ -24,6 +24,7 @@ function Registerscreen() {
       try {
         setloading(true);
         const result = (await axios.post("/api/users/register", user)).data;
+        console.log(result);
         setloading(false);
         setsuccess(true);
         setname("");
