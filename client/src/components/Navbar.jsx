@@ -9,13 +9,13 @@ function Navbar() {
   }
   return (
     <div>
-      <nav class="navbar navbar-expand-lg bg-warning fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/home" style={{fontSize:'25px',padding:'15px'}}>
+      <nav className="navbar navbar-expand-lg bg-warning fixed-top">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/home" style={{fontSize:'25px',padding:'15px'}}>
             HotelInHand
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup"
@@ -23,17 +23,17 @@ function Navbar() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon">
-              <i class="fa fa-reorder fa-lg"></i>
+            <span className="navbar-toggler-icon">
+              <i className="fa fa-reorder fa-lg"></i>
             </span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav">
               {user ? (
                 <>
                   <Dropdown>
                     <Dropdown.Toggle variant="warning" id="dropdown-basic">
-                      <i class="fa fa-user fa-lg"></i> {user.name}
+                      <i className="fa fa-user fa-lg"></i> {user.name}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
@@ -46,10 +46,10 @@ function Navbar() {
                 </>
               ) : (
                 <>
-                  <a class="nav-link" href="/register" style={{fontFamily:'Georgia',fontSize:'20px'}}>
+                  <a className="nav-link" href="/register" style={{fontFamily:'Georgia',fontSize:'20px'}}>
                     Register
                   </a>
-                  <a class="nav-link" href="/login" style={{fontFamily:'Georgia',fontSize:'20px'}}>
+                  <a className="nav-link" href="/login" style={{fontFamily:'Georgia',fontSize:'20px'}}>
                     Log in
                   </a>
                 </>

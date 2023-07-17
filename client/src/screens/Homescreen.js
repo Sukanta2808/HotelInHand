@@ -140,7 +140,7 @@ console.log(error);
           rooms.map((room) => {
             return (
               <div className="col-md-9 mt-2">
-                <Room room={room} fromdate={fromdate} todate={todate} />
+                <Room key={room._id} room={room} fromdate={fromdate} todate={todate} />
               </div>
             );
           })
