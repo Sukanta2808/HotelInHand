@@ -139,8 +139,8 @@ console.log(error);
         ) : (
           rooms.map((room) => {
             return (
-              <div className="col-md-9 mt-2">
-                <Room key={room._id} room={room} fromdate={fromdate} todate={todate} />
+              <div className="col-md-9 mt-2" key={room._id}>
+                <Room room={room} fromdate={fromdate} todate={todate} />
               </div>
             );
           })
