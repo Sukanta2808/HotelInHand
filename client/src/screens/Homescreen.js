@@ -143,7 +143,7 @@ function Homescreen() {
               </select>
             </div>
           </div>
-          <div className="row justify-content-center mt-2 ">
+          <div className="row mt-2 ">
             {rooms.map((room) => {
               return (
                 <div className="col-md-9 mt-2" key={room._id}>
