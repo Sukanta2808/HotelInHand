@@ -4,9 +4,10 @@ import Room from "../components/Room";
 import Loader from "../components/Loader";
 import { DatePicker } from "antd";
 import moment from "moment";
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
+moment.suppressDeprecationWarnings = true;
 
 dayjs.extend(customParseFormat);
 
@@ -21,13 +22,13 @@ function Homescreen() {
   const [type, settype] = useState("all");
 
   const { RangePicker } = DatePicker;
-  const size = 'large';
+  const size = "large";
 
   const disabledDate = (current) => {
-    return current && current < dayjs().startOf('day');
+    return current && current < dayjs().startOf("day");
   };
 
-console.log(error);
+  console.log(error);
   useEffect(() => {
     return async () => {
       try {
@@ -90,7 +91,7 @@ console.log(error);
     setrooms(temprooms);
   }
   function filterByType(e) {
-    settype(e)
+    settype(e);
     if (e !== "all") {
       const temprooms = duplicaterooms.filter(
         (room) => room.type.toLowerCase() === e.toLowerCase()
@@ -103,49 +104,56 @@ console.log(error);
 
   return (
     <div className="container">
-      <div className="row mt-5 bs">
-        <div className="col-md-3">
-            <RangePicker size={size} format={"DD-MM-YYYY"} onChange={filterbydate} disabledDate={disabledDate} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <div className="row mt-5 bs">
+            <div className="col-md-3">
+              <RangePicker
+                size={size}
+                format={"DD-MM-YYYY"}
+                onChange={filterbydate}
+                disabledDate={disabledDate}
+              />
+            </div>
+            <div className="col-md-5">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search Rooms"
+                value={searchkey}
+                onChange={(e) => {
+                  setsearchkey(e.target.value);
+                }}
+                onKeyUp={filterBySearch}
+              />
+            </div>
+            <div className="col-md-3">
+              <select
+                className="form-control"
+                value={type}
+                onChange={(e) => {
+                  filterByType(e.target.value);
+                }}
+              >
+                <option value="all">All</option>
+                <option value="deluxe">Deluxe</option>
+                <option value="classic">Classic</option>
+              </select>
+            </div>
+          </div>
+          <div className="row justify-content-center mt-2 ">
+            {rooms.map((room) => {
+              return (
+                <div className="col-md-9 mt-2" key={room._id}>
+                  <Room room={room} fromdate={fromdate} todate={todate} />
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="col-md-5">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search Rooms"
-            value={searchkey}
-            onChange={(e) => {
-              setsearchkey(e.target.value);
-            }}
-            onKeyUp={filterBySearch}
-          />
-        </div>
-        <div className="col-md-3">
-          <select
-            className="form-control"
-            value={type}
-            onChange={(e) => {
-              filterByType(e.target.value);
-            }}
-          >
-            <option value="all">All</option>
-            <option value="deluxe">Deluxe</option>
-            <option value="classic">Classic</option>
-          </select>
-        </div>
-      </div>
-      <div className="row justify-content-center mt-2 ">
-        {loading ? (
-          <Loader />
-        ) : (
-          rooms.map((room) => {
-            return (
-              <div className="col-md-9 mt-2" key={room._id}>
-                <Room room={room} fromdate={fromdate} todate={todate} />
-              </div>
-            );
-          })
-        )}
-      </div>
+      )}
     </div>
   );
 }
