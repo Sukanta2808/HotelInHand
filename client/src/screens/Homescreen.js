@@ -33,7 +33,7 @@ function Homescreen() {
     return async () => {
       try {
         setloading(true);
-        const roomData = (await axios.get("/api/rooms/getallrooms")).data;
+        const roomData = (await axios.post("/api/rooms/getallrooms")).data;
         setduplicaterooms(roomData);
         setrooms(roomData);
         setloading(false);
